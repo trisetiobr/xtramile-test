@@ -1,5 +1,6 @@
 ## Basic Algorithm Test
 ### Task 1
+```
 // In PHP programming language
 
 function findUniqueNumbers($collection) {
@@ -20,8 +21,10 @@ function findUniqueNumbers($collection) {
   }
   return $output;
 }
+```
 
 ### Task 2
+```
 // In PHP programming language
 
 function findMaxSum($input) {
@@ -33,7 +36,7 @@ function findMaxSum($input) {
   
   return $output;
 }
-
+```
 
 ## Java Engineer Test
 
