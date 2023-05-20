@@ -1,0 +1,159 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentPatient.id">
+    <h4>Patient</h4>
+    <div>
+      <label><strong>PID</strong></label>
+      {{ currentPatient.id }}
+    </div>
+    <div>
+      <label><strong>First Name:</strong></label>
+      {{ currentPatient.firstName }}
+    </div>
+    <div>
+      <label><strong>Last Name:</strong></label>
+      {{ currentPatient.lastName }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/patients/{{ currentPatient.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentPatient">
+    <br />
+    <p>Please click on a Patient...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentPatient.id" class="edit-form">
+    <h4>Patient</h4>
+    <form>
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          required
+          [(ngModel)]="currentPatient.firstName"
+          name="firstName"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          required
+          [(ngModel)]="currentPatient.lastName"
+          name="lastName"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phoneNo">Phone No</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNo"
+          required
+          [(ngModel)]="currentPatient.phoneNo"
+          name="phoneNo"
+        />
+      </div>
+      <div class="form-group" type="date">
+        <label for="dateOfBirth">Date Of Birth</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dateOfBirth"
+          required
+          [(ngModel)]="currentPatient.dateOfBirth"
+          name="dateOfBirth"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="form-control" [(ngModel)]="currentPatient.gender" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+        </select>
+
+      </div>
+      <div class="form-group">
+        <label for="title">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="currentPatient.address"
+          name="address"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="suburb">Suburb</label>
+        <input
+          type="text"
+          class="form-control"
+          id="suburb"
+          required
+          [(ngModel)]="currentPatient.suburb"
+          name="suburb"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input
+          type="text"
+          class="form-control"
+          id="state"
+          required
+          [(ngModel)]="currentPatient.state"
+          name="state"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="postcode">Post Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="postcode"
+          required
+          [(ngModel)]="currentPatient.postcode"
+          name="postcode"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deletePatient()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updatePatient()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentPatient.id">
+    <br />
+    <p>Cannot access this Patient...</p>
+  </div>
+</ng-template>
