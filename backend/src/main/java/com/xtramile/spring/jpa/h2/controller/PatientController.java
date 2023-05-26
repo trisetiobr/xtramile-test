@@ -60,7 +60,7 @@ public class PatientController {
 		}
 	}
 
-	@PostMapping("/patients")
+	@PostMapping("/patients-test")
 	public ResponseEntity<Patient> createPatient(@RequestBody Patient patient) {
 		try {
 			Patient _patient = patientRepository
